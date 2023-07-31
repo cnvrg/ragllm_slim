@@ -1,4 +1,4 @@
-# RAG LLM Blueprint
+# RAG LLM Slim Blueprint
 
 This blueprint allows is a one click to deploy a RAG Slim pipeline for inference using LLM connected to cnvrg storage solution. User needs to have one external service online before using this blueprint i.e a Large language model. User will use the RAG endpoint for inference, which in turn will connect with cnvrg datasets to retrieve latest documents and LLM to generate relevant answers.
 The cnvrg dataset will be updated using the cnvrg continual learning that will be deployed along with the RAG Slim endpoint. User needs to set the trigger of the continual learning for the dataset and the dataset will be updated automatically when a new document is added.  

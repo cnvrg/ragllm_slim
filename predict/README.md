@@ -1,4 +1,4 @@
-# RAG Endpoint
+# RAG LLM Slim Endpoint
 
 This library deploys an endpoint on Cnvrg that is used to ask questions and generate relevant answers, based on the documents present in the connected cnvrg dataset. This endpoint connects with a Large Language Model, based on the information provided in the environment variables. Currently we support:
 
