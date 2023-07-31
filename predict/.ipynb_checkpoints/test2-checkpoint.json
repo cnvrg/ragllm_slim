@@ -1,0 +1,8 @@
+[{
+            "instruction": "If you are a doctor, please answer the medical questions based on the patient's description.",
+            "input": "Doctor I am having painful headaches, diarrhoea, itchy skin, sore throat and difficulty breathing.",
+            "output": "While there could be several diseases that could explain your symptoms, I believe we should test you for disease X. Disease X is a newly spreading disease that has similar symptoms. It could be the cause of your symptoms."
+}
+]
+      
+      

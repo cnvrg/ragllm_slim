@@ -1,0 +1,48 @@
+---
+title: ragllm-slim
+version: 1.0.0
+description: "test"
+long_description: "test"
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - training
+
+# List of tasks (libraries)
+tasks:
+  - title: Inference
+    top: 400
+    left: 500
+    
+    type: deploy
+    
+    library: rag-endpoint-slim
+    library-version: 1.0.0
+    
+    kind: webservice 
+    
+    requirements: 
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+      
+    image: python:3.8.10
+    language: python3
+
+    accept_files: false
+
+    file_name: predict.py 
+    function_name: query
+    prep_file: '' 
+    prep_function: '' 
+    input_example:
+      query: text
+    input_schema:
+      query: text
+    output_schema: {} 
+  
+
+relations: []
