@@ -37,7 +37,19 @@ The user must add the documents to the cnvrg dataset in a json format
     paragraphs: {documents}
 
     ### Response:
-        
+
+Example:
+
+```
+[
+    {
+        "content": "I'm experiencing nasal congestion and pain in my eye. What could be wrong? Based on your symptoms, it seems like you are suffering from conjunctivitis due to bacteria."
+    },
+    {
+        "content": "I'm experiencing high fever, severe headache, and joint pain. Okay, there's a blood test called hematologic test which we need to do to confirm whether you have Dengue fever or not."
+    }
+]
+```    
 
 `API_KEY` = Your API key provided by the service provider. 
 
@@ -61,3 +73,4 @@ Once deployed, go to the endpoint page and scroll down.
 `RETRIEVER_N` = The  number of top documents you want the retriever to retrieve from the ElasticSearch index. For example 20.
 
 `RANKER_N` = The  number of top documents you want to send to the LLM after re-ranking. For example 5.
+
