@@ -31,13 +31,8 @@ class main_endpoint:
 
         if self.provider.lower() != "cnvrg":
             self.cnvrg = False
-            
-        # Azure support will be added in the next release
-        # self.deployment_name = self.check_variable("AZURE_DEPLOYMENT_NAME")
-        # self.base_url = self.check_variable("AZURE_BASE_URL")
 
         # setup cnvrg credentials
-        
         if self.provider == "cnvrg":
             self.cnvrg_url = os.environ["URL"]
             self.cnvrg_1 = self.cnvrg_url[
@@ -58,12 +53,10 @@ class main_endpoint:
         
     def updator(self, document_name):
         data = json.load(open(document_name, "r"))
+
         contents = [
             Document(
-                content="A patient asked: "
-                + d["input"]
-                + ". The doctor answered: "
-                + d["output"]
+                content=d["content"]
             )
             for d in data
         ]
@@ -80,12 +73,6 @@ class main_endpoint:
             document_store=self.document_store, top_k=int(self.retrieverk)
         )
         ranker = ColBERTRanker(checkpoint_path="Intel/ColBERT-NQ", top_k=int(self.rankerk))
-        # ranker = SentenceTransformersRanker(
-        #     model_name_or_path="cross-encoder/ms-marco-MiniLM-L-6-v2",
-        #     top_k=5,
-        #     batch_size=32,
-        #     use_gpu=False,
-        # )
         self.pipeline = Pipeline()
         self.pipeline.add_node(component=retriever, name="Retriever", inputs=["Query"])
         self.pipeline.add_node(component=ranker, name="Reranker", inputs=["Retriever"])
@@ -108,7 +95,6 @@ class main_endpoint:
     def external_language_model(self):
 
         if self.provider.lower() == "openai":
-            # model = PromptModel(self.model_name, api_key=self.api_key)
             self.LLM = PromptNode(self.model_name, api_key=self.api_key)
             self.cnvrg = False
 
@@ -127,18 +113,6 @@ class main_endpoint:
             raise Exception(
                 "Please provide a valid LLM service provider in the environment variable PROVIDER, acceptable ones are cnvrg, openai, huggingface"
             )
-
-        # Azure support will be added in the next release
-        # if self.deployment_name is not None:
-        #     model = PromptModel(
-        #         model_name_or_path=self.model_name,
-        #         api_key=self.api_key,
-        #         model_kwargs={
-        #             "azure_deployment_name": self.deployment_name,
-        #             "azure_base_url": self.base_url,
-        #         },
-        #     )
-        #     self.LLM = PromptNode(model)
         
     def cnvrg_language_model(self, data):
 
@@ -160,23 +134,6 @@ class main_endpoint:
             return self.cnvrg_language_model(data)
         else:
             return self.LLM(data)
-
-# os.environ["PROVIDER"] = 'cnvrg'
-# os.environ["DATASET"] = 'rag'
-# os.environ["RETRIEVER_N"] = '10'
-# os.environ["RANKER_N"] = '5'
-# os.environ["MODEL_NAME"] = 'google/flan-t5-xxl'
-# os.environ["API_KEY"] = 'SXj1CvN18Jg35Wh8yQEVJb1V'
-# os.environ["URL"] = 'https://inference-1031-1.amr2uxdpwunywjqvp2kefkp.cloud.cnvrg.io/api/v1/endpoints/sdchqsvw1kfb4nsn29wk'
-# os.environ["PROMPT"] = '''Below is an instruction that describes a task paired with an input, which provides further context. Write a response that appropriately completes the request.
-
-#     ### Instruction:
-#     You are a doctor. Synthesize a comprehensive answer from the following Input and the question: {query}
-
-#     ### Input:
-#     paragraphs: {documents}
-
-#     ### Response:'''
 
 definitions = main_endpoint()
 definitions.read_environ_variables()

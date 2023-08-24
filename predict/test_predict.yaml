@@ -8,22 +8,22 @@ final_prompt: "We will insert documents here: These are my documents and we will
 #to test openai model set provider = openai
 
 test_llm: "True"
-api_key: "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"
-provider: "huggingface"
-model_name: "google/flan-t5-xxl"
+api_key: "<api key for the model provider>"
+provider: "<model set provider>"
+model_name: "<name of the model>"
 
 cnvrg_url:
 
 #set up elasticSearch
 test_ElasticSearch: "True"
 
-host : "10.42.245.225"
-port : "9200"
-username : "None"
-password : "None"
-index : "medical_healthcaremagic_100k"
-retriever_n : "20"
-ranker_n : "5"
+host : "<host>"
+port : "<port>"
+username : "<username>"
+password : "<password>"
+index : "<index>"
+retriever_n : "<retriever>"
+ranker_n : "<ranker>"
 
 
 
