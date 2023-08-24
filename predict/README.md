@@ -38,7 +38,7 @@ The user must add the documents to the cnvrg dataset in a json format
 
     ### Response:
 
-Example:
+Sample document for reference:
 
 ```
 [
