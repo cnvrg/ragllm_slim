@@ -38,7 +38,7 @@ The user must add the documents to the cnvrg dataset in a json format
 
     ### Response:
 
-Sample document for reference:
+Sample of the dataset document for reference:
 
 ```
 [
@@ -73,4 +73,3 @@ Once deployed, go to the endpoint page and scroll down.
 `RETRIEVER_N` = The  number of top documents you want the retriever to retrieve from the ElasticSearch index. For example 20.
 
 `RANKER_N` = The  number of top documents you want to send to the LLM after re-ranking. For example 5.
-

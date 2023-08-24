@@ -1,11 +1,17 @@
 # RAG LLM Slim Blueprint
 
-This blueprint allows is a one click to deploy a RAG Slim pipeline for inference using LLM connected to cnvrg storage solution. User needs to have one external service online before using this blueprint i.e a Large language model. User will use the RAG endpoint for inference, which in turn will connect with cnvrg datasets to retrieve latest documents and LLM to generate relevant answers.
-The cnvrg dataset will be updated using the cnvrg continual learning that will be deployed along with the RAG Slim endpoint. User needs to set the trigger of the continual learning for the dataset and the dataset will be updated automatically when a new document is added.  
+This blueprint allows is a one click to deploy a RAG Slim pipeline for inference using LLM connected to cnvrg storage solution.
+
+## Prerequisite
+
+1. A Large Language Model hosted on cnvrg.io or OpenAI or HuggingFace.
+2. A cnvrg dataset holding the relevant documents to be used for RAG endpoint. The dataset needs to be added to the flow as a data task.
+3. In order to keep the FastRAG endpoint up-to date with newly added data use the [continual learning](https://app.cnvrg.io/docs/core_concepts/flows.html#settings) feature in the flow config.For every file change of the conected dataset a new version of the FastRAG endpoint will be launched with access to the latest files.
 
 1. Click on `Use Blueprint` button.
-2. You will be redirected to your blueprint flow page.
-3. Go to the project settings section and update the environment variables with relevant information that will be used by the RAG endpoint.
+2. You will be redirected to a new project with the blueprint flow page.
+3. Go to the project settings section and update the [environment variables](https://app.cnvrg.io/docs/core_concepts/projects.html#environment) with relevant information that will be used by the RAG endpoint.
+    For more info see the component [readme](https://app.af2jdjq262tdqvyelihtqnd.cloud.cnvrg.io/blueprintsdev/blueprints/libraries/rag-endpoint-slim/1.0.0)
 4. Link the cnvrg dataset as a task with the inference.
 5. Click on continual learning and select `Trigger on dataset update` and choose your dataset
 6. Click on the ‘Run Flow’ button
@@ -13,5 +19,3 @@ The cnvrg dataset will be updated using the cnvrg continual learning that will b
 8. Go to the ‘Serving’ tab in the project and look for your endpoint.
 9. You can use the Try it Live section to query the RAG endpoint and generate relevant answers with LLM connected.
 10. You can also integrate your API with your code using the integration panel at the bottom of the page
-
-
