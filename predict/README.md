@@ -20,6 +20,20 @@ The user  must add a few environment variables in order to deploy and use the RA
 
 ### Dataset setup
 The user must add the documents to the cnvrg dataset in a json format
+
+Sample of the dataset document for reference:
+
+```
+[
+    {
+        "content": "I'm experiencing nasal congestion and pain in my eye. What could be wrong? Based on your symptoms, it seems like you are suffering from conjunctivitis due to bacteria."
+    },
+    {
+        "content": "I'm experiencing high fever, severe headache, and joint pain. Okay, there's a blood test called hematologic test which we need to do to confirm whether you have Dengue fever or not."
+    }
+]
+``` 
+
 ### LLM setup variables
 `PROVIDER` = The name of the LLM service provider. Acceptable values are: `huggingface` , `openai` and `cnvrg`
 
@@ -38,18 +52,7 @@ The user must add the documents to the cnvrg dataset in a json format
 
     ### Response:
 
-Sample of the dataset document for reference:
-
-```
-[
-    {
-        "content": "I'm experiencing nasal congestion and pain in my eye. What could be wrong? Based on your symptoms, it seems like you are suffering from conjunctivitis due to bacteria."
-    },
-    {
-        "content": "I'm experiencing high fever, severe headache, and joint pain. Okay, there's a blood test called hematologic test which we need to do to confirm whether you have Dengue fever or not."
-    }
-]
-```    
+Note: The prompt can be modified to fit the model needs
 
 `API_KEY` = Your API key provided by the service provider. 
 
