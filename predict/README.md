@@ -33,6 +33,7 @@ Sample of the dataset document for reference:
     }
 ]
 ``` 
+Note: Adjusting the document's format is possible to meet the model's requirements. However, it's essential to modify how the code within the updator.py script accesses the document.
 
 ### LLM setup variables
 `PROVIDER` = The name of the LLM service provider. Acceptable values are: `huggingface` , `openai` and `cnvrg`
